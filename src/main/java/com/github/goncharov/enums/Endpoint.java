@@ -1,5 +1,8 @@
 package com.github.goncharov.enums;
 
+
+import com.github.goncharov.query.Query;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Goncharov
@@ -7,8 +10,8 @@ package com.github.goncharov.enums;
  * Time: 14:05
  */
 public enum Endpoint {
-    PHOTOS(HttpMethod.GET, "/photos", "feature", "user_id", "username",
-            "only", "exclude", "sort", "page", "rpp"),
+    PHOTOS(HttpMethod.GET, "/photos", Query.FEATURE, Query.USER_ID, Query.USERNAME,
+            Query.ONLY, Query.EXCLUDE, Query.SORT, "page", "rpp"),
     PHOTOS_SHOW(HttpMethod.GET, "/photos/%d", "image_size", "comments", "comments_page"),
     PHOTOS_SEARCH(HttpMethod.GET, "/photos/search", "term", "tag", "page", "rpp"),
     USERS(HttpMethod.GET, "/users"),

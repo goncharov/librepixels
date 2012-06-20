@@ -1,7 +1,6 @@
 package com.github.goncharov;
 
-import com.github.goncharov.entities.PhotoStream;
-import com.github.goncharov.entities.UserProfile;
+import com.github.goncharov.impl.UserApi;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,15 +11,13 @@ import com.github.goncharov.entities.UserProfile;
 public interface Px500 {
     void setHttpClient(HttpClient client);
 
+    HttpClient getHttpClient();
+
     void setJsonMapper(JsonMapper mapper);
 
-    UserProfile getUserProfile();
+    JsonMapper getJsonMapper();
 
-    UserProfile getUserProfileById(int id);
+    UserApi getUser();
 
-    UserProfile getUserProfileByName(String username);
 
-    UserProfile getUserProfileByEmail(String email);
-
-    PhotoStream getPhotoStream();
 }

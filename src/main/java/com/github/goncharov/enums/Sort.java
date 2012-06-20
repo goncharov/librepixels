@@ -1,6 +1,7 @@
 package com.github.goncharov.enums;
 
 import com.github.goncharov.QueryEnumeration;
+import com.github.goncharov.query.Query;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +26,7 @@ public enum Sort implements QueryEnumeration {
 
     @Override
     public String getName() {
-        return "sort";
+        return Query.SORT;
     }
 
     @Override

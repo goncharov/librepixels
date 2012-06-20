@@ -10,27 +10,57 @@ import com.github.goncharov.QueryEnumeration;
  * Time: 14:02
  */
 public enum Category implements QueryEnumeration, EntityEnumeration<Integer> {
-    UNCATEGORIZED("Uncategorized"),
-    CELEBRITIES("Celebrities"),
-    FILM("Film"),
-    JOURNALISM("Journalism");
+    UNCATEGORIZED(0, "Uncategorized"),
+    CELEBRITIES(1, "Celebrities"),
+    FILM(2, "Film"),
+    JOURNALISM(3, "Journalism"),
+    NUDE(4, "Nude"),
+    BLACK_AND_WHITE(5, "Black and White"),
+    STILL_LIFE(6, "Still Life"),
+    PEOPLE(7, "People"),
+    LANDSCAPES(8, "Landscapes"),
+    CITY_AND_ARCHITECTURE(9, "City and Architecture"),
+    ABSTRACT(10, "Abstract"),
+    ANIMALS(11, "Animals"),
+    MACRO(12, "Macro"),
+    TRAVEL(13, "Travel"),
+    FASHION(14, "Fashion"),
+    COMMERCIAL(15, "Commercial"),
+    CONCERT(16, "Concert"),
+    SPORT(17, "Sport"),
+    NATURE(18, "Nature"),
+    PERFORMING_ARTS(19, "Performing Arts"),
+    FAMILY(20, "Family"),
+    STREET(21, "Street"),
+    UNDERWATER(22, "Underwater"),
+    FOOD(23, "Food"),
+    FINE_ART(24, "Fine Art"),
+    WEDDING(25, "Wedding"),
+    TRANSPORTATION(26, "Transporation"),
+    URBAN_EXPLORATION(27, "Urban Exploration");
 
-    private final String title;
+    private final int id;
+    private final String category;
 
-    Category(String title) {
-        this.title = title;
+    Category(int id, String category) {
+        this.id = id;
+        this.category = category;
     }
 
     public static Category fromValue(int id) {
-        try {
-            return Category.values()[id];
-        } catch (Exception e) {
-            return null;
+        for (Category category : Category.values()) {
+            if (category.toInteger() == id)
+                return category;
         }
+        return null;
     }
 
     public static Category fromValue(String title) {
-        return Category.valueOf(title.toUpperCase());
+        for (Category category : Category.values()) {
+            if (category.toString().equals(title))
+                return category;
+        }
+        return null;
     }
 
     @Override
@@ -40,15 +70,15 @@ public enum Category implements QueryEnumeration, EntityEnumeration<Integer> {
 
     @Override
     public String toString() {
-        return title;
+        return category;
     }
 
     public int toInteger() {
-        return ordinal();
+        return id;
     }
 
     @Override
     public <T> T getRaw() {
-        return (T) Integer.class.cast(ordinal());
+        return (T) Integer.class.cast(id);
     }
 }

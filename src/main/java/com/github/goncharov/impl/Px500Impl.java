@@ -3,10 +3,6 @@ package com.github.goncharov.impl;
 import com.github.goncharov.HttpClient;
 import com.github.goncharov.JsonMapper;
 import com.github.goncharov.Px500;
-import com.github.goncharov.entities.PhotoStream;
-import com.github.goncharov.entities.UserProfile;
-import com.github.goncharov.enums.Endpoint;
-import com.github.goncharov.query.QueryBuilder;
 
 /**
  * Created by IntelliJ IDEA.
@@ -31,6 +27,13 @@ public class Px500Impl implements Px500 {
     }
 
     @Override
+    public HttpClient getHttpClient() {
+        synchronized (client) {
+            return client;
+        }
+    }
+
+    @Override
     public void setJsonMapper(JsonMapper mapper) {
         synchronized (this.mapper) {
             this.mapper = mapper;
@@ -38,28 +41,15 @@ public class Px500Impl implements Px500 {
     }
 
     @Override
-    public UserProfile getUserProfile() {
-        return new QueryBuilder(Endpoint.USERS).build(UserProfile.class, client, mapper);
+    public JsonMapper getJsonMapper() {
+        synchronized (mapper) {
+            return mapper;
+        }
     }
 
     @Override
-    public UserProfile getUserProfileById(int id) {
-        return null;
-    }
-
-    @Override
-    public UserProfile getUserProfileByName(String username) {
-        return null;
-    }
-
-    @Override
-    public UserProfile getUserProfileByEmail(String email) {
-        return null;
-    }
-
-    @Override
-    public PhotoStream getPhotoStream() {
-        return null;
+    public UserApi getUser() {
+        return new UserApi(this);
     }
 
 

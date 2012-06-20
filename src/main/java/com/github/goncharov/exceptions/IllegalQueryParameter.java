@@ -1,5 +1,7 @@
 package com.github.goncharov.exceptions;
 
+import com.github.goncharov.enums.Endpoint;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Goncharov
@@ -9,5 +11,9 @@ package com.github.goncharov.exceptions;
 public class IllegalQueryParameter extends Px500Exception {
     public IllegalQueryParameter() {
         super();
+    }
+
+    public IllegalQueryParameter(String param, Endpoint endpoint) {
+        super("Parameter \"" + param + "\" not allowed for " + endpoint.getPath() + " queries");
     }
 }

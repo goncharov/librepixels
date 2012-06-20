@@ -2,6 +2,7 @@ package com.github.goncharov.enums;
 
 import com.github.goncharov.EntityEnumeration;
 import com.github.goncharov.QueryEnumeration;
+import com.github.goncharov.query.Query;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,7 +33,7 @@ public enum Feature implements QueryEnumeration, EntityEnumeration<String> {
 
     @Override
     public String getName() {
-        return "feature";
+        return Query.FEATURE;
     }
 
     @Override

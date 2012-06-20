@@ -9,5 +9,6 @@ package com.github.goncharov.enums;
 public enum HttpMethod {
     GET,
     POST,
+    PUT,
     DELETE
 }
